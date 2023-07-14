@@ -73,7 +73,7 @@ if [[ -n $7 ]]; then
 fi
 
 source $XILINX_DIR/Vitis/2021.1/settings64.sh
-if [ "$ARCH_OPTION" == "64" ]; then
+if [ "$ARCH_OPTION" = "64" ]; then
     LINUX_KERNEL_SRC_DIR=$OPENWIFI_DIR/adi-linux-64/
     ARCH="arm64"
     CROSS_COMPILE="aarch64-linux-gnu-"

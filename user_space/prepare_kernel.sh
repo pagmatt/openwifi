@@ -45,7 +45,7 @@ else
     echo "\$ARCH_OPTION is valid!"
 fi
 
-if [ "$ARCH_OPTION" == "64" ]; then
+if [ "$ARCH_OPTION" = "64" ]; then
     LINUX_KERNEL_SRC_DIR_NAME=adi-linux-64
     LINUX_KERNEL_CONFIG_FILE=$OPENWIFI_DIR/kernel_boot/kernel_config_zynqmp
     ARCH_NAME="arm64"
@@ -60,7 +60,6 @@ else
 fi
 
 home_dir=$(pwd)
-
 set -x
 
 cd $OPENWIFI_DIR/
