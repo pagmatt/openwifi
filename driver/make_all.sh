@@ -80,7 +80,7 @@ if [ "$ARCH_OPTION" == "64" ]; then
 else
     LINUX_KERNEL_SRC_DIR=$OPENWIFI_DIR/adi-linux/
     ARCH="arm"
-    CROSS_COMPILE="arm-linux-gnueabihf-"
+    CROSS_COMPILE="arm-none-eabi-"
 fi
 
 # check if user entered the right path to analog device linux
@@ -95,12 +95,8 @@ set -x
 
 home_dir=$(pwd)
 
-cd $OPENWIFI_DIR/driver/
-if git log -1; then
-    echo "#define GIT_REV 0x"$(git log -1 --pretty=%h) > git_rev.h
-else
-    echo "#define GIT_REV 0xFFFFFFFF" > git_rev.h
-fi
+#echo "#define GIT_REV 0x"$(git log -1 --pretty=%h) > git_rev.h
+
 cd $OPENWIFI_DIR/driver/openofdm_tx
 make KDIR=$LINUX_KERNEL_SRC_DIR ARCH=$ARCH CROSS_COMPILE=$CROSS_COMPILE
 cd $OPENWIFI_DIR/driver/openofdm_rx
