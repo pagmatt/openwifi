@@ -66,6 +66,7 @@ cd $OPENWIFI_DIR/
 git submodule init $LINUX_KERNEL_SRC_DIR_NAME
 cd $OPENWIFI_DIR/$LINUX_KERNEL_SRC_DIR_NAME
 git reset --hard
+git clean  -d  -f .
 cd $OPENWIFI_DIR/
 git submodule update $LINUX_KERNEL_SRC_DIR_NAME
 cd $OPENWIFI_DIR/$LINUX_KERNEL_SRC_DIR_NAME
@@ -85,6 +86,9 @@ source $XILINX_DIR/Vitis/2021.1/settings64.sh
   git apply ../kernel_boot/axi_hdmi_crtc.patch
   git apply ../kernel_boot/ad9361.patch
   git apply ../kernel_boot/ad9361_conv.patch
+
+  # apply custom 80211 patch
+  git apply ../driver/80211.patch
 # else
   # make zynq_xcomm_adv7511_defconfig
 # fi

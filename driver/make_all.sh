@@ -113,6 +113,12 @@ make KDIR=$LINUX_KERNEL_SRC_DIR ARCH=$ARCH CROSS_COMPILE=$CROSS_COMPILE
 cd $OPENWIFI_DIR/driver/side_ch
 ./make_driver.sh $XILINX_DIR $ARCH_OPTION
 
+echo "Exporting custom mac80211 kernel module"
+SRC_MAC80211=$(readlink -m $LINUX_KERNEL_SRC_DIR/net/mac80211/mac80211.ko)
+cp $SRC_MAC80211 $OPENWIFI_DIR/driver -rf
+SRC_CFG80211=$(readlink -m $LINUX_KERNEL_SRC_DIR/net/wireless/cfg80211.ko)
+cp $SRC_CFG80211 $OPENWIFI_DIR/driver -rf
+
 cd $OPENWIFI_DIR/driver/
 make KDIR=$LINUX_KERNEL_SRC_DIR ARCH=$ARCH CROSS_COMPILE=$CROSS_COMPILE
 

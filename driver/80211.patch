@@ -1,0 +1,13 @@
+diff --git a/net/wireless/nl80211.c b/net/wireless/nl80211.c
+index f67ddf2cebcb..08ed2fe5a67b 100644
+--- a/net/wireless/nl80211.c
++++ b/net/wireless/nl80211.c
+@@ -9887,6 +9887,8 @@ static int nl80211_deauthenticate(struct sk_buff *skb, struct genl_info *info)
+ 	u16 reason_code;
+ 	bool local_state_change;
+ 
++	return -EINVAL;
++
+ 	if (dev->ieee80211_ptr->conn_owner_nlportid &&
+ 	    dev->ieee80211_ptr->conn_owner_nlportid != info->snd_portid)
+ 		return -EPERM;
